@@ -142,4 +142,12 @@
             <instance>rilExternal</instance>
         </interface>
     </hal>
+    <hal>
+        <name>android.hardware.graphics.composer3</name>
+        <version>2</version>
+        <interface>
+            <name>IComposer</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
 </compatibility-matrix>
