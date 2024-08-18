@@ -177,7 +177,6 @@
     <integer-array name="config_availableColorModes">
         <item>0</item> <!-- COLOR_MODE_NATURAL -->
         <item>256</item> <!-- vendor color mode boosted -->
-        <item>2</item> <!-- COLOR_MODE_SATURATED -->
         <item>3</item> <!-- COLOR_MODE_AUTOMATIC -->
     </integer-array>
 
@@ -290,6 +289,7 @@
         <item>com.zhiliaoapp.musically:0.07</item>
         <item>com.bilibili.app.in:0.07</item>
         <item>com.twitter.android:0.07</item>
+        <item>com.google.android.youtube:0.07</item>
     </string-array>
 
     <!-- Pre-scale volume at volume step 1 for Absolute Volume -->

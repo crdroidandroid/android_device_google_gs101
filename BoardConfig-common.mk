@@ -149,7 +149,6 @@ BOARD_AVB_BOOT_ROLLBACK_INDEX_LOCATION := 2
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 11796480000
-BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := f2fs
 PRODUCT_FS_COMPRESSION := 1
 BOARD_FLASH_BLOCK_SIZE := 4096
 BOARD_MOUNT_SDCARD_RW := true
@@ -166,6 +165,7 @@ TARGET_COPY_OUT_SYSTEM_EXT := system_ext
 # Video Codec
 ########################
 # 1. Exynos C2
+BOARD_USE_CODEC2_HIDL_1_2 := true
 BOARD_USE_CSC_FILTER := false
 BOARD_USE_DEC_SW_CSC := true
 BOARD_USE_ENC_SW_CSC := true
@@ -349,6 +349,14 @@ KERNEL_MODULE_DIR := $(TARGET_KERNEL_DIR)
 KERNEL_MODULES := $(wildcard $(KERNEL_MODULE_DIR)/*.ko)
 
 BOARD_VENDOR_KERNEL_MODULES_BLOCKLIST_FILE := $(KERNEL_MODULE_DIR)/vendor_dlkm.modules.blocklist
+
+# Since Pixel 6/6pro doesn't have a system_dlkm partition, the GKI modules are
+# on the vendor_dlkm partition. In order to allow them to load properly, we
+# need to retain the module signature which would normally get stripped during
+# packaging. Disable stripping the vendor_dlkm modules to retain the GKI
+# modules' signature. Note, the pixel kernel builds always strip the modules in
+# favor of saving space via the kleaf property: strip_modules = True.
+BOARD_DO_NOT_STRIP_VENDOR_MODULES := true
 
 # Prebuilt kernel modules that are *not* listed in vendor_boot.modules.load
 BOARD_PREBUILT_VENDOR_RAMDISK_KERNEL_MODULES = fips140/fips140.ko
