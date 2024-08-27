@@ -142,7 +142,7 @@
             <instance>rilExternal</instance>
         </interface>
     </hal>
-    <hal>
+    <hal format="aidl">
         <name>android.hardware.graphics.composer3</name>
         <version>2</version>
         <interface>
